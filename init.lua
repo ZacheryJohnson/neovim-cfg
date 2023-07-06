@@ -11,3 +11,5 @@ rt.setup({
     end,
   },
 })
+
+rt.inlay_hints.enable()
