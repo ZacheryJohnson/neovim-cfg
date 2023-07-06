@@ -33,9 +33,6 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.g.mapleader = " "
 
--- Return to last directory
-vim.keymap.set('n', '<Leader>cx', vim.cmd.Ex)
-
 -- Navigate to '~/dev' directory
 vim.keymap.set('n', '<Leader>cd', ':edit ~/dev<cr>')
 
@@ -68,6 +65,7 @@ require("nvim-tree").setup()
 local api = require("nvim-tree.api")
 vim.keymap.set('n', '<leader><CR>', api.tree.change_root_to_node)
 vim.keymap.set('n', '<leader>.', api.tree.change_root_to_parent)
+vim.keymap.set('n', '<leader>a', '<Cmd>NvimTreeToggle<CR>')
 
 -----------------------------------
 -- Barbar
@@ -80,8 +78,12 @@ local opts = { noremap = true, silent = true }
 map('n', '<A-w>', '<Cmd>BufferClose<CR>', opts)
 
 -- Move to previous/next tab
-map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
-map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
+map('n', '<A-Left>', '<Cmd>BufferPrevious<CR>', opts)
+map('n', '<A-Right>', '<Cmd>BufferNext<CR>', opts)
+
+-- Move current tab to the left/right
+map('n', '<A-,>', '<Cmd>BufferMovePrevious<CR>', opts)
+map('n', '<A-.>', '<Cmd>BufferMoveNext<CR>', opts)
 
 -- Go to tabs 1-5
 map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
